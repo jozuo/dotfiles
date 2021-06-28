@@ -1,0 +1,284 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'arcticicestudio/nord-vim'
+hook_add = '''
+  "set background=dark
+  "au MyAutoCmd VimEnter * nested colorscheme nord
+'''
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+  nnoremap <silent> sa :NERDTreeToggle<cr>
+  let g:NERDTreeIgnore=['^__pycache__$[[dir]]', '^node_modules$[[dir]]', '^__init__.py$']
+  let g:NERDTreeWinSize = 40
+  let g:NERDTreeLimitedSyntax = 1
+  " set modifiable
+  " set write
+'''
+
+[[plugins]]
+repo = 'tiagofumo/vim-nerdtree-syntax-highlight'
+hook_add = '''
+  nnoremap <silent> sa :NERDTreeToggle<cr>
+  let g:NERDTreeSyntaxDisableDefaultExtensions = 1
+  let g:NERDTreeSyntaxDisableDefaultExactMatches = 1
+  let g:NERDTreeSyntaxDisableDefaultPatternMatches = 1
+  let g:NERDTreeSyntaxEnabledExtensions =
+        \['css',
+        \'html',
+        \'java',
+        \'js',
+        \'json',
+        \'md',
+        \'png',
+        \'py',
+        \'sh',
+        \'sql',
+        \'toml',
+        \'ts',
+        \'tsx',
+        \'xml',
+        \'yml']
+'''
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+
+[[plugins]]
+repo = 'h1mesuke/vim-alignta'
+
+[[plugins]]
+repo = 'szw/vim-tags'
+
+[[plugins]]
+repo = 'jiangmiao/auto-pairs'
+
+[[plugins]]
+repo = 'delphinus/lightline-delphinus'
+
+[[plugins]]
+repo = 'posva/vim-vue'
+
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install --all'
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+hook_add = '''
+  let g:fzf_preview_window = []
+  nnoremap <silent> ;f :Files<cr>
+  nnoremap <silent> ;b :Buffers<cr>
+'''
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'HerringtonDarkholme/yats.vim'
+
+[[plugins]]
+repo = 'maxmellon/vim-jsx-pretty'
+
+[[plugins]]
+repo = 'neoclide/jsonc.vim'
+
+[[plugins]]
+repo = 'dhruvasagar/vim-table-mode'
+hook_add = '''
+  let g:table_mode_corner="|"
+'''
+
+[[plugins]]
+repo = 'airblade/vim-rooter'
+hook_add = '''
+  " Change only current window's directory
+  let g:rooter_cd_cmd="lcd"
+  " files/directories for the root directory
+  let g:rooter_patterns = ['tags', '.git', '.git/', '_darcs/', '.hg/', '.bzr/', 'Makefile', 'GNUMakefile', 'GNUmakefile', '.svn/']
+  " Automatically change the directory
+  "autocmd! BufEnter *.c,*.cc,*.cxx,*.cpp,*.h,*.hh,*.java,*.py,*.sh,*.rb,*.html,*.css,*.js :Rooter
+'''
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_add = '''
+  highlight clear SignColumn
+  highlight GitGutterAdd ctermfg=green
+  highlight GitGutterChange ctermfg=yellow
+  highlight GitGutterDelete ctermfg=red
+  highlight GitGutterChangeDelete ctermfg=yellow
+'''
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+hook_add = '''
+  " 入力モードで開始する
+  let g:unite_enable_start_insert=0
+  " バッファ一覧
+  noremap <C-P> :Unite buffer<CR>
+  " ファイル一覧
+  noremap <C-N> :Unite -buffer-name=file file<CR>
+  " 最近使ったファイルの一覧
+  noremap <C-Z> :Unite file_mru<CR>
+  " sourcesを「今開いているファイルのディレクトリ」とする
+  noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
+  " ウィンドウを分割して開く
+  au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
+  au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
+  " ウィンドウを縦に分割して開く
+  au FileType unite nnoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
+  au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
+  " ESCキーを2回押すと終了する
+  au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+  au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+'''
+
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
+hook_add = '''
+  let g:indent_guides_enable_on_vim_startup = 1
+  " ガイドをスタートするインデントの量
+  let g:indent_guides_start_level=2
+  " 自動カラー無効
+  let g:indent_guides_auto_colors=0
+  " 奇数番目のインデントの色
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#444433 ctermbg=black
+  " autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=gray
+  " 偶数番目のインデントの色
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#333344 ctermbg=darkgray
+  " autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#3c3c3c ctermbg=darkgray
+  " ガイドの幅
+  "let g:indent_guides_guide_size = 1
+'''
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = '''
+  let g:lightline = {
+        \ 'active': {
+        \   'left': [ [ 'mode', 'paste' ],
+        \             [ 'gitbranch', 'readonly', 'filename', 'modified' ],
+        \             [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ] 
+        \   ]
+        \ },
+        \ 'component_function': {
+        \   'gitbranch': 'fugitive#head',
+        \   'ale': 'ALEGetStatusLine'
+        \ },
+        \ 'colorscheme': 'nord'
+        \ }
+  let g:lightline.component_expand = {
+        \  'linter_checking': 'lightline#ale#checking',
+        \  'linter_warnings': 'lightline#ale#warnings',
+        \  'linter_errors': 'lightline#ale#errors',
+        \  'linter_ok': 'lightline#ale#ok'
+        \ }
+  let g:lightline.component_type = {
+        \     'linter_checking': 'left',
+        \     'linter_warnings': 'warning',
+        \     'linter_errors': 'error',
+        \     'linter_ok': 'left'
+        \ }
+'''
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+hook_add = '''
+  let g:quickrun_config = {}
+  let g:quickrun_config.markdown = {
+        \ 'outputter' : 'null',
+        \ 'command'   : 'open',
+        \ 'cmdopt'    : '-a',
+        \ 'args'      : 'Marked\ 2',
+        \ 'exec'      : '%c %o %a %s:p',
+        \ }
+'''
+
+[[plugins]]
+repo = 'maximbaz/lightline-ale'
+
+[[plugins]]
+repo = 'jceb/vim-orgmode'
+hook_add = '''
+  let g:org_todo_keywords=['TODO', 'DOING', 'REVIEW', '|', 'DONE', 'DELEGATED']
+'''
+
+[[plugins]]
+repo = 'bfredl/nvim-miniyank'
+hook_add = '''
+map p <Plug>(miniyank-autoput)
+map P <Plug>(miniyank-autoPut)
+'''
+
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+rev = 'release'
+on_i = 1
+merged = '0'
+hook_source = 'call coil398#init#coc#hook_source()'
+hook_add = '''
+  augroup python
+  autocmd FileType python nnoremap <leader>c :CocCommand pydocstring.runFile<cr>
+  autocmd FileType python nnoremap <leader>s :CocCommand python.sortImports<cr>
+  autocmd FileType typescriptreact nnoremap <leader>s :CocCommand editor.action.organizeImport<cr>
+  autocmd FileType typescript nnoremap <leader>s :CocCommand editor.action.organizeImport<cr>
+  " autocmd FileType python nnoremap <leader>s :CocCommand editor.action.organizeImport<cr>
+  "   autocmd!
+  "   autocmd InsertLeave *.py :call CocAction('runCommand', 'editor.action.organizeImport')
+  "   autocmd InsertLeave *.py :call CocAction('runCommand', 'python.sortImports')
+  augroup END
+  func! s:colors_setup() abort
+    hi CocErrorLine ctermfg=15 ctermbg=NONE
+    hi Comment guifg=#959ba6
+  endfunc
+  
+  augroup colorscheme_coc_setup | au!
+    au ColorScheme * call s:colors_setup()
+  augroup END
+'''
+
+[[plugins]]
+repo = 'wesleyche/SrcExpl'
+hook_add = '''
+  " Set refresh time in ms
+  let g:SrcExpl_RefreshTime = 1000
+  " Is update tags when SrcExpl is opened
+  let g:SrcExpl_isUpdateTags = 0
+  " Tag update command
+  let g:SrcExpl_updateTagsCmd = 'ctags --sort=foldcase %'
+  " Update all tags
+  function! g:SrcExpl_UpdateAllTags()
+    let g:SrcExpl_updateTagsCmd = 'ctags --sort=foldcase -R .'
+    call g:SrcExpl_UpdateTags()
+    let g:SrcExpl_updateTagsCmd = 'ctags --sort=foldcase %'
+  endfunction
+  " Source Explorer Window Height
+  let g:SrcExpl_winHeight = 14
+  " Mappings
+  nn [srce] <nop>
+  nm <leader>E [srce]
+  nn <silent> [srce]<cr> :SrcExplToggle<cr>
+  nn <silent> [srce]u :call g:SrcExpl_UpdateTags()<cr>
+  nn <silent> [srce]a :call g:SrcExpl_UpdateAllTags()<cr>
+  nn <silent> [srce]n :call g:SrcExpl_NextDef()<cr>
+  nn <silent> [srce]p :call g:SrcExpl_PrevDef()<cr>
+'''
+
+[[plugins]]
+repo = 'mileszs/ack.vim'
+if = '''executable('ag')'''
+hook_add = '''
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+'''

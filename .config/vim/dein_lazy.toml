@@ -1,0 +1,29 @@
+[[plugins]]
+repo = 'fatih/vim-go'
+on_ft = ['go']
+
+[[plugins]]
+repo = 'elzr/vim-json'
+on_ft = ['json']
+hook_add = 'let g:vim_json_syntax_conceal = 0'
+
+[[plugins]]
+repo = 'majutsushi/tagbar'
+hook_add = '''
+  " Width (default 40)
+  let g:tagbar_width = 40
+  " Map for toggle
+  nnoremap <silent><nowait> ss :TagbarToggle<cr>
+'''
+
+# [[plugins]]
+# repo = 'plasticboy/vim-markdown'
+# on_ft = ['markdown','mkd', 'md']
+#  hook_add = '''
+#    let g:vim_markdown_folding_disabled = 1
+#  '''
+
+# quote内のプログラムをシンタックスハイライトする
+[[plugins]]
+repo = 'joker1007/vim-markdown-quote-syntax'
+on_ft = ['markdown','mkd']

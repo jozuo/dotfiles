@@ -1,0 +1,59 @@
+[core]
+	excludesfile = ~/.gitignore
+	editor = 'nvim' -c 'set fenc=utf-8'
+	quotepath = false
+	autocrlf = input
+	filemode = false
+	ignorecase = false
+	sparseCheckout = true
+	pager = npx git-split-diffs --color | less -RFX
+	precomposeunicode = true
+[delta]
+    plus-color = "#012800"
+    minus-color = "#340001"
+    syntax-theme = Monokai Extended
+[push]
+	default = current
+[pull]
+	rebase = true
+[alias]
+  co = checkout
+  ci = commit
+  ps = "!git push -u origin $(git rev-parse --abbrev-ref HEAD)"
+  pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
+  new = switch -c
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lga = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	svn-diff = "!f() { git svn dcommit -n | grep diff | awk -F'diff-tree' -v opt=$@ '{print \"git diff \"opt\" \"$2}' | bash; }; f"
+	delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
+	push-f = push --force-with-lease
+[http]
+	postBuffer = 1048576000
+[diff]
+	compactionHeuristic = true
+[interactive]
+	diffFilter = delta --color-only
+[init]
+	templatedir = ~/.git-templates/git-secrets
+	defaultBranch = main
+[pager]
+	branch = false
+[credential]
+	helper = osxkeychain
+[secrets]
+	providers = git secrets --aws-provider
+	patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
+	patterns = (\"|')?(AWS|aws|Aws)?_?(SECRET|secret|Secret)?_?(ACCESS|access|Access)?_?(KEY|key|Key)(\"|')?\\s*(:|=>|=)\\s*(\"|')?[A-Za-z0-9/\\+=]{40}(\"|')?
+	patterns = (\"|')?(AWS|aws|Aws)?_?(ACCOUNT|account|Account)_?(ID|id|Id)?(\"|')?\\s*(:|=>|=)\\s*(\"|')?[0-9]{4}\\-?[0-9]{4}\\-?[0-9]{4}(\"|')?
+  allowed = 111111111111
+	allowed = AKIAIOSFODNN7EXAMPLE
+	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+	allowed = 123456789012
+[diff]
+    tool = default-difftool
+[difftool "default-difftool"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+[include]
+	path = .gitconfig.local
+[includeIf "gitdir:~/project/"]
+  path = ~/project/.gitconfig
