@@ -381,6 +381,7 @@ let g:coc_global_extensions = [
   \ 'coc-python',
   \ 'coc-pyright',
   \ 'coc-markdownlint',
+  \ 'coc-html',
   \ 'coc-css',
   \ ]
 
