@@ -107,6 +107,9 @@ fi
 # yarn
 export PATH="$PATH:${HOME}/.yarn/bin"
 
+# cargo
+export PATH=$PATH:"$HOME/.cargo/bin"
+
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='ag -g ""'
