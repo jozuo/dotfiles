@@ -85,17 +85,20 @@ alias v='f -e vim'
 alias o='f -e open'
 
 # java - jenv
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
+if [ -d $HOME/.jenv/ ]; then
+  export PATH="$HOME/.jenv/bin:$PATH"
+  eval "$(jenv init -)"
+fi
 
 # node - nodenv
-export PATH="$HOME/.nodenv/bin:$PATH"
-eval "$(nodenv init -)"
+if [ -d $HOME/.nodenv/ ]; then
+  export PATH="$HOME/.nodenv/bin:$PATH"
+  eval "$(nodenv init -)"
+fi
 
 # python - pyenv
-export PATH="$PATH:~/.local/bin"
-export PYENV_ROOT="${HOME}/.pyenv"
-if [ -d "${PYENV_ROOT}" ]; then
+if [ -d $HOME/.pyenv/ ]; then
+    export PYENV_ROOT="${HOME}/.pyenv"
     export PATH=${PYENV_ROOT}/bin:$PATH
     eval "$(pyenv init --path)"
 fi
@@ -105,18 +108,27 @@ if [ -d $HOME/.poetry/ ]; then
 fi
 
 # yarn
-export PATH="$PATH:${HOME}/.yarn/bin"
+if [ -d $HOME/.yarn/ ]; then
+  export PATH="$PATH:${HOME}/.yarn/bin"
+fi
 
 # cargo
-export PATH=$PATH:"$HOME/.cargo/bin"
+if [ -d $HOME/.cargo/ ]; then
+  export PATH=$PATH:"$HOME/.cargo/bin"
+fi
 
 # fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='ag -g ""'
-export FZF_COMPLETION_TRIGGER="?" # default: '**'
-export FZF_DEFAULT_OPTS='--height 40% --reverse --border --color fg:242,bg:233,hl:65,fg+:15,bg+:234,hl+:108 --color info:108,prompt:109,spinner:108,pointer:168,marker:168'
-# --preview "[[ $(file --mime {}) =~ binary  ]] && echo {} is a binary file || (highlight -O ansi -l {} || coderay {} || rougify {} || cat {}) 2> /dev/null | head -500"
-source /Users/toru/.zsh/docker/docker-fzf.zsh
+if [ -f ~/.fzf.zsh ]; then 
+  source ~/.fzf.zsh
+  export FZF_DEFAULT_COMMAND='ag -g ""'
+  export FZF_COMPLETION_TRIGGER="?" # default: '**'
+  export FZF_DEFAULT_OPTS='--height 40% --reverse --border --color fg:242,bg:233,hl:65,fg+:15,bg+:234,hl+:108 --color info:108,prompt:109,spinner:108,pointer:168,marker:168'
+  # --preview "[[ $(file --mime {}) =~ binary  ]] && echo {} is a binary file || (highlight -O ansi -l {} || coderay {} || rougify {} || cat {}) 2> /dev/null | head -500"
+fi
+
+if [ -f $HOME/.zsh/docker/docker-fzf.zsh ]; then
+  source ${HOME}/.zsh/docker/docker-fzf.zsh
+fi
 
 function fzf-docker_exec () {
     local selected_file=$(docker ps --format "{{.Names}}" | fzf)
