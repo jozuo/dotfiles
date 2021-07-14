@@ -1,5 +1,4 @@
 [core]
-	excludesfile = ~/.gitignore
 	editor = 'nvim' -c 'set fenc=utf-8'
 	quotepath = false
 	autocrlf = input

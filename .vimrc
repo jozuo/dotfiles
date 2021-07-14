@@ -178,6 +178,7 @@ if has("autocmd")
   autocmd FileType java	setlocal sw=4 sts=4 ts=4 et
   autocmd FileType markdown	setlocal sw=2 sts=2 ts=2 et 
   autocmd FileType groovy	setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType php	setlocal sw=4 sts=4 ts=4 et
   autocmd FileType sh	setlocal sw=4 sts=4 ts=4 et
   autocmd FileType org	setlocal sw=2 sts=2 ts=2 et
   autocmd BufRead,BufNewFile *.json set filetype=jsonc
@@ -366,6 +367,7 @@ nmap NN ]m
 "nmap PP [m
 autocmd QuickFixCmdPost *grep* cwindow
 nnoremap <silent><nowait> ss :TagbarToggle<cr>
+inoremap <silent> jj <ESC>
 
 set completeopt=menuone,noinsert
 inoremap <expr><C-n> pumvisible() ? "<Down>" : "<C-n>"
@@ -384,6 +386,7 @@ let g:coc_global_extensions = [
   \ 'coc-html',
   \ 'coc-css',
   \ 'coc-emmet',
+  \ 'coc-phpls',
   \ ]
 
 "--------------------------------------------------------------------------------

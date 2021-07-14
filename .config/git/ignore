@@ -29,3 +29,7 @@ Desktop.ini
 .fseventsd
 .TemporaryItems
 .VolumeIcon.icns
+
+# coc-nvim local setting
+.vim/
+

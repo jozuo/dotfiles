@@ -27,3 +27,10 @@ hook_add = '''
 [[plugins]]
 repo = 'joker1007/vim-markdown-quote-syntax'
 on_ft = ['markdown','mkd']
+
+[[plugins]]
+repo = 'beanworks/vim-phpfmt'
+on_ft = ['php']
+hook_add = '''
+  let g:phpfmt_standard = "PSR2"
+'''

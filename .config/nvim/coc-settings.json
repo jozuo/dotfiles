@@ -1,5 +1,5 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": ["python", "markdown", "typescriptreact", "typescript", "javascript", "html", "json", "css", "scss"],
+  "coc.preferences.formatOnSaveFiletypes": ["python", "markdown", "typescriptreact", "typescript", "javascript", "html", "json", "css", "scss", "php"],
   "eslint.autoFixOnSave": true,
   "python.autoUpdateLanguageServer": true,
   "python.jediEnabled": false,
