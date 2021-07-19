@@ -75,9 +75,16 @@ cask "rectangle"
 cask "switchresx"
 cask "visual-studio-code"
 cask "zoom"
+mas "Gapplin", id: 768053424
+mas "GarageBand", id: 682658836
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
 mas "Kindle", id: 405399194
 mas "LINE", id: 539883307
 mas "Marked 2", id: 890031187
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
 mas "Skitch", id: 425955336
 mas "Slack", id: 803453959
+mas "WinArchiver Lite", id: 414855915
 mas "Xcode", id: 497799835
