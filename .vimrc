@@ -399,7 +399,9 @@ let g:coc_global_extensions = [
 "--------------------------------------------------------------------------------
 tnoremap <Esc> <C-\><C-n>
 command! -nargs=* T split | wincmd j | resize 20 | terminal <args>
-autocmd TermOpen * startinsert
+if has('nvim')
+  autocmd TermOpen * startinsert
+endif
 "--------------------------------------------------------------------------------
 " nvim terminal setting start
 "--------------------------------------------------------------------------------
