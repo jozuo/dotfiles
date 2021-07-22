@@ -70,6 +70,10 @@ zstyle ':completion:*:descriptions' format '%BCompleting%b %U%d%u'
 # zstyle ':completion:*:descriptions' format '%BCompleting%b %U%d%u'
 # zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z} r:|[-_.]=**'
 
+# original script
+if [ -d $HOME/.bin/ ]; then
+  export PATH="$HOME/.bin:$PATH"
+fi
 
 # direnv
 eval "$(direnv hook zsh)"
