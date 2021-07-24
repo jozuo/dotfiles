@@ -282,3 +282,6 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 '''
+
+[[plugins]]
+repo = 'preservim/nerdcommenter'
