@@ -178,7 +178,7 @@ if has("autocmd")
   autocmd FileType java	setlocal sw=4 sts=4 ts=4 et
   autocmd FileType markdown	setlocal sw=2 sts=2 ts=2 et 
   autocmd FileType groovy	setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType php	setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType php	setlocal sw=2 sts=2 ts=2 et
   autocmd FileType sh	setlocal sw=4 sts=4 ts=4 et
   autocmd FileType org	setlocal sw=2 sts=2 ts=2 et
   autocmd BufRead,BufNewFile *.json set filetype=jsonc
