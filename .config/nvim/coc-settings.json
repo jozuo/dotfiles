@@ -18,6 +18,12 @@
     "no-duplicate-heading": false,
     "commands-show-output": false
   },
+  "emmet.variables": {
+    "lang": "ja",
+    "locale": "ja-JP",
+    "charset": "UTF-8"
+  },
+  "emmet.extensionsPath": "~/.config/emmet",
   "diagnostic.errorSign": "✘",
   "diagnostic.warningSign": "",
   "diagnostic.infoSign": "",
