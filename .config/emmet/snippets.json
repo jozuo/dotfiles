@@ -1,7 +1,8 @@
 {
   "html": {
     "snippets": {
-      "declare": "<?php declare(strict_types=1); ?>"
+      "php": "<?php $0 ?>",
+      "php:declare": "<?php declare(strict_types=1); ?>"
     }
   }
 }
