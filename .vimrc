@@ -455,6 +455,15 @@ augroup nord-theme-overrides
 augroup END
 
 "--------------------------------------------------------------------------------
+" vdebug
+"--------------------------------------------------------------------------------
+highlight DbgBreakptSign cterm=reverse ctermfg=2 gui=reverse guifg=#A3BE8C guibg=#2E3440
+highlight DbgBreakptLine cterm=NONE
+highlight DbgCurrentSign cterm=reverse ctermfg=1 gui=reverse guifg=#BF616A guibg=#2E3440
+highlight DbgCurrentLine cterm=underline ctermfg=1 gui=undercurl guifg=#BF616A guibg=#2E3440 guisp=#BF616A
+" highlight DbgCurrentLine cterm=reverse ctermfg=1 gui=reverse guifg=#BF616A guibg=#2E3440
+
+"--------------------------------------------------------------------------------
 " other
 "--------------------------------------------------------------------------------
 " 貼り付けたテキストの末尾へ自動的に移動する
