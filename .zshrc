@@ -7,15 +7,18 @@ fi
 #alias ls="ls -GF"
 alias ls="lsd"
 alias gls="gls --color"
-alias awk='gawk'
-alias sed='gsed'
-alias tar='gtar'
-alias tig='TERM=xterm-256color tig'
+# alias tig='TERM=xterm-256color tig'
 alias awslocal="aws --endpoint-url=http://localhost:8000"
 alias pytest="python -m pytest -v -s --disable-warnings"
 alias vi="nvim"
 alias vim="nvim"
 alias vimdiff='nvim -d '
+
+if [ `uname -S` = "Darwin" ]; then
+  alias awk='gawk'
+  alias sed='gsed'
+  alias tar='gtar'
+fi
 
 # editor
 export EDITOR=nvim
