@@ -14,7 +14,7 @@ alias vi="nvim"
 alias vim="nvim"
 alias vimdiff='nvim -d '
 
-if [ `uname -S` = "Darwin" ]; then
+if [ `uname -s` = "Darwin" ]; then
   alias awk='gawk'
   alias sed='gsed'
   alias tar='gtar'
