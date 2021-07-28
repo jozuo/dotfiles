@@ -2,3 +2,4 @@
 .config/configstore/
 .config/iterm2/
 .config/yarn/
+.config/direnv/
