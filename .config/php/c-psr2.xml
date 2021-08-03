@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<ruleset name="Custom_PSR2">
+  <description>Custom ruleset Based on PSR2</description>
+  <rule ref="PSR2" />
+  <rule ref="Generic.WhiteSpace.ScopeIndent">
+    <properties>
+      <property name="indent" value="2"/>
+      <property name="tabIndent" value="false"/>
+    </properties>
+  </rule>
+</ruleset>

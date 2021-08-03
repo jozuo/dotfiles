@@ -32,7 +32,8 @@ on_ft = ['markdown','mkd']
 repo = 'beanworks/vim-phpfmt'
 on_ft = ['php']
 hook_add = '''
-  let g:phpfmt_standard = "PSR2"
+  "let g:phpfmt_standard = "PSR2"
+  let g:phpfmt_standard = '~/.config/php/c-psr2.xml'
 '''
 
 [[plugins]]
