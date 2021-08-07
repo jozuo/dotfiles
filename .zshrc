@@ -114,6 +114,11 @@ if [ -d $HOME/.poetry/ ]; then
   export PATH=$HOME/.poetry/bin:${PATH}
 fi
 
+# php - composer
+if [ -d $HOME/.composer/vendor ]; then
+  export PATH=$HOME/.composer/vendor/bin:${PATH}
+fi
+
 # yarn
 if [ -d $HOME/.yarn/ ]; then
   export PATH="$PATH:${HOME}/.yarn/bin"
@@ -156,7 +161,6 @@ function fzf-vim () {
 }
 zle -N fzf-vim
 bindkey '^v' fzf-vim
-
 
 # android sdk
 export ANDROID_SDK=$HOME/Library/Android/sdk

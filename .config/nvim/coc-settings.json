@@ -1,5 +1,16 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": ["python", "markdown", "typescriptreact", "typescript", "javascript", "html", "json", "css", "scss", "php"],
+  "coc.preferences.formatOnSaveFiletypes": [
+    "python",
+    "markdown",
+    "typescriptreact",
+    "typescript",
+    "javascript",
+    "html",
+    "json",
+    "css",
+    "scss",
+    "php"
+  ],
   "eslint.autoFixOnSave": true,
   "python.autoUpdateLanguageServer": true,
   "python.jediEnabled": false,
@@ -23,6 +34,9 @@
     "locale": "ja-JP",
     "charset": "UTF-8"
   },
+  "snippets.textmateSnippetsRoots": [
+    "~/Library/Application Support/Code/User/snippets"
+  ],
   "emmet.extensionsPath": "~/.config/emmet",
   "diagnostic.errorSign": "✘",
   "diagnostic.warningSign": "",
