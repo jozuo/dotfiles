@@ -1,3 +1,4 @@
+tap "heroku/brew"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
@@ -27,6 +28,7 @@ brew "lftp"
 brew "libimobiledevice"
 brew "lsd"
 brew "mas"
+brew "mysql-client"
 brew "neovim"
 brew "nodenv"
 brew "poetry"
@@ -55,6 +57,7 @@ brew "zsh"
 brew "zsh-autosuggestions"
 brew "zsh-completions"
 brew "zsh-syntax-highlighting"
+brew "heroku/brew/heroku"
 brew "shivammathur/php/php@7.4", link: true
 cask "1password"
 cask "1password-cli"
@@ -90,6 +93,7 @@ mas "LINE", id: 539883307
 mas "Marked 2", id: 890031187
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "Parallels Client", id: 600925318
 mas "Skitch", id: 425955336
 mas "Slack", id: 803453959
 mas "WinArchiver Lite", id: 414855915

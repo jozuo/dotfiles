@@ -440,8 +440,8 @@ endfunction
 "-------------------------------------------------------------------------------
 " Open current directory
 nmap te :tabedit<CR>
-nmap <leader><S-Tab> :tabprev<CR>
-nmap <leader><Tab> :tabnext<CR>
+nmap <silent><S-Tab> :tabprev<CR>
+nmap <silent><Tab> :tabnext<CR>
 
 " ファイルタイプ関連を有効にする
 filetype plugin indent on

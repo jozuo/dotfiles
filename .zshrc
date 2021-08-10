@@ -35,13 +35,8 @@ setopt HIST_NO_STORE              # histroyコマンドは記録しない
 # zsh - fish like
 set -o vi
 bindkey -v
-if [ `uname -m` = "arm64" ]; then
-  source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-  source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-else
-  source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
+source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
@@ -127,6 +122,11 @@ fi
 # cargo
 if [ -d $HOME/.cargo/ ]; then
   export PATH=$PATH:"$HOME/.cargo/bin"
+fi
+
+# mysql-client
+if [ -d $HOMEBREW_PREFIX/opt/mysql-client/ ]; then
+  export PATH=$HOMEBREW_PREFIX/opt/mysql-client/bin:$PATH
 fi
 
 # fzf

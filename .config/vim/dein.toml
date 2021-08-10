@@ -11,13 +11,21 @@ hook_add = '''
 [[plugins]]
 repo = 'Shougo/neomru.vim'
 
+# [[plugins]]
+# repo = 'jistr/vim-nerdtree-tabs'
+# hook_add = '''
+#   nnoremap <silent> sa :NERDTreeTabsToggle<cr>
+# '''
+
 [[plugins]]
 repo = 'scrooloose/nerdtree'
 hook_add = '''
-  nnoremap <silent> sa :NERDTreeToggle<cr>
+  noremap <silent> sa :NERDTreeToggle<cr>
   let g:NERDTreeIgnore=['^__pycache__$[[dir]]', '^node_modules$[[dir]]', '^__init__.py$']
   let g:NERDTreeWinSize = 40
   let g:NERDTreeLimitedSyntax = 1
+  let g:NERDTreeCustomOpenArgs={'file':{'where': 't'}}
+  " let g:NERDTreeMapOpenInTab='<ENTER>'
   " set modifiable
   " set write
 '''
