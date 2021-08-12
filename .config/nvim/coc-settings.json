@@ -34,7 +34,6 @@
     "locale": "ja-JP",
     "charset": "UTF-8"
   },
-  "emmet.extensionsPath": "~/.config/emmet",
   "snippets.textmateSnippetsRoots": [
     "~/Library/Application Support/Code/User/snippets"
   ],
