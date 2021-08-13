@@ -1,0 +1,11 @@
+memodir = "${HOME}/iCloudDrive/memo/_posts"
+editor = "nvim"
+column = 20
+width = 0
+selectcmd = "fzf"
+grepcmd = "ag ${PATTERN} ${DIR}"
+memotemplate = ""
+assetsdir = "."
+pluginsdir = "${HOME}/.config/memo/plugins"
+templatedirfile = ""
+templatebodyfile = ""

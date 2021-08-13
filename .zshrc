@@ -114,6 +114,12 @@ if [ -d $HOME/.composer/vendor ]; then
   export PATH=$HOME/.composer/vendor/bin:${PATH}
 fi
 
+# go
+if [ -d $HOME/go ]; then
+  export GOPATH=$HOME/go
+  export PATH=$GOPATH/bin:${PATH}
+fi
+
 # yarn
 if [ -d $HOME/.yarn/ ]; then
   export PATH="$PATH:${HOME}/.yarn/bin"
