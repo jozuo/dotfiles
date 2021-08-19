@@ -60,6 +60,7 @@ brew "zsh-autosuggestions"
 brew "zsh-completions"
 brew "zsh-syntax-highlighting"
 brew "heroku/brew/heroku"
+brew "shivammathur/php/php@7.3"
 brew "shivammathur/php/php@7.4", link: true
 cask "1password"
 cask "1password-cli"

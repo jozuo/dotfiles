@@ -3,6 +3,11 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+# homebrew
+if [ `uname -m` = "arm64" ]; then
+  export PATH=$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH
+fi
+
 # alias
 #alias ls="ls -GF"
 alias ls="lsd"
@@ -80,6 +85,9 @@ eval "$(direnv hook zsh)"
 alias g='git'
 alias gsw='git switch $(git branch -a | tr -d " " |fzf --height 100% --prompt "CHECKOUT BRANCH>" --preview "git log --color=always {}" | head -n 1 | sed -e "s/^\*\s*//g" | perl -pe "s/remotes\/origin\///g")'
 export PATH=${PATH}:/usr/local/share/git-core/contrib/diff-highlight
+
+# tmux
+typeset -U path PATH
 
 # fasd
 eval "$(fasd --init auto)"
