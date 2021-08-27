@@ -20,14 +20,19 @@ repo = 'Shougo/neomru.vim'
 [[plugins]]
 repo = 'scrooloose/nerdtree'
 hook_add = '''
-  noremap <silent> sa :NERDTreeToggle<cr>
+  " noremap <silent> sa :NERDTreeToggle<cr>
   let g:NERDTreeIgnore=['^__pycache__$[[dir]]', '^node_modules$[[dir]]', '^__init__.py$']
   let g:NERDTreeWinSize = 40
   let g:NERDTreeLimitedSyntax = 1
   let g:NERDTreeCustomOpenArgs={'file':{'where': 't'}}
-  " let g:NERDTreeMapOpenInTab='<ENTER>'
-  " set modifiable
-  " set write
+
+  " Exit Vim if NERDTree is the only window remaining in the only tab.
+  autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+  " Open the existing NERDTree on each new tab.
+  autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
+
+  " Open NERDTree Current file position."
+  nnoremap <silent> sf :NERDTreeFind<cr>
 '''
 
 [[plugins]]
@@ -44,6 +49,7 @@ hook_add = '''
         \'js',
         \'json',
         \'md',
+        \'php',
         \'png',
         \'py',
         \'sh',
@@ -54,6 +60,9 @@ hook_add = '''
         \'xml',
         \'yml']
 '''
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'cespare/vim-toml'
@@ -74,15 +83,20 @@ repo = 'delphinus/lightline-delphinus'
 repo = 'posva/vim-vue'
 
 [[plugins]]
+repo = 'editorconfig/editorconfig-vim'
+
+[[plugins]]
 repo = 'junegunn/fzf'
 build = './install --all'
 
 [[plugins]]
 repo = 'junegunn/fzf.vim'
 hook_add = '''
-  let g:fzf_preview_window = []
+  " let g:fzf_preview_window = []
   nnoremap <silent> ;f :Files<cr>
   nnoremap <silent> ;b :Buffers<cr>
+  " ESCキーを2回押すと終了する
+  au FileType fzf tnoremap <silent> <buffer> <ESC><ESC> <C-c>
 '''
 
 [[plugins]]
@@ -181,22 +195,26 @@ hook_add = '''
         \ },
         \ 'component_function': {
         \   'gitbranch': 'fugitive#head',
-        \   'ale': 'ALEGetStatusLine'
+        \   'ale': 'ALEGetStatusLine',
+        \   'filename': 'LightlineFilename'
         \ },
         \ 'colorscheme': 'nord'
         \ }
   let g:lightline.component_expand = {
-        \  'linter_checking': 'lightline#ale#checking',
-        \  'linter_warnings': 'lightline#ale#warnings',
-        \  'linter_errors': 'lightline#ale#errors',
-        \  'linter_ok': 'lightline#ale#ok'
+        \   'linter_checking': 'lightline#ale#checking',
+        \   'linter_warnings': 'lightline#ale#warnings',
+        \   'linter_errors': 'lightline#ale#errors',
+        \   'linter_ok': 'lightline#ale#ok'
         \ }
   let g:lightline.component_type = {
-        \     'linter_checking': 'left',
-        \     'linter_warnings': 'warning',
-        \     'linter_errors': 'error',
-        \     'linter_ok': 'left'
+        \   'linter_checking': 'left',
+        \   'linter_warnings': 'warning',
+        \   'linter_errors': 'error',
+        \   'linter_ok': 'left'
         \ }
+  function! LightlineFilename()
+    return expand('%:h') . '/' . expand('%:t')
+  endfunction
 '''
 
 [[plugins]]

@@ -4,6 +4,9 @@ disabled = true
 [package]
 disabled = true
 
+[docker_context]
+disabled = true
+
 [directory]
 truncation_length = 100
 truncate_to_repo = false

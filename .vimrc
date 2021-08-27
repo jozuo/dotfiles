@@ -178,7 +178,7 @@ if has("autocmd")
   autocmd FileType java	setlocal sw=4 sts=4 ts=4 et
   autocmd FileType markdown	setlocal sw=2 sts=2 ts=2 et 
   autocmd FileType groovy	setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType php	setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType php	setlocal sw=4 sts=4 ts=4 et
   autocmd FileType sh	setlocal sw=4 sts=4 ts=4 et
   autocmd FileType org	setlocal sw=2 sts=2 ts=2 et
   autocmd BufRead,BufNewFile *.json set filetype=jsonc
@@ -468,9 +468,9 @@ highlight DbgCurrentLine cterm=underline ctermfg=1 gui=undercurl guifg=#BF616A g
 " other
 "--------------------------------------------------------------------------------
 " 貼り付けたテキストの末尾へ自動的に移動する
-vnoremap <silent> y y`]
-vnoremap <silent> p p`]
-nnoremap <silent> p p`]
+" vnoremap <silent> y y`]
+" vnoremap <silent> p p`]
+" nnoremap <silent> p p`]
 
 " 貼り付け時にペーストバッファが上書きされないようにする
-xnoremap p "_dP
+" xnoremap p "_dP

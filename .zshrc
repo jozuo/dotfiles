@@ -143,13 +143,16 @@ if [ -d $HOMEBREW_PREFIX/opt/mysql-client/ ]; then
   export PATH=$HOMEBREW_PREFIX/opt/mysql-client/bin:$PATH
 fi
 
+# bat
+export BAT_THEME="Nord"
+
 # fzf
 if [ -f ~/.fzf.zsh ]; then 
   source ~/.fzf.zsh
   export FZF_DEFAULT_COMMAND='ag -g ""'
   export FZF_COMPLETION_TRIGGER="?" # default: '**'
-  export FZF_DEFAULT_OPTS='--height 40% --reverse --border --color fg:242,bg:233,hl:65,fg+:15,bg+:234,hl+:108 --color info:108,prompt:109,spinner:108,pointer:168,marker:168'
-  # --preview "[[ $(file --mime {}) =~ binary  ]] && echo {} is a binary file || (highlight -O ansi -l {} || coderay {} || rougify {} || cat {}) 2> /dev/null | head -500"
+  export FZF_DEFAULT_OPTS='--height 40% --reverse --border --color fg:242,bg:233,hl:65,fg+:15,bg+:234,hl+:108 --color info:108,prompt:109,spinner:108,pointer:168,marker:168
+    --preview "bat --color=always --style=header,grid --line-range :300 {}"'
 fi
 
 if [ -f $HOME/.zsh/docker/docker-fzf.zsh ]; then
