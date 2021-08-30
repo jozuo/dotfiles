@@ -386,7 +386,7 @@ let g:coc_global_extensions = [
   \ 'coc-python',
   \ 'coc-pyright',
   \ 'coc-snippets',
-  \ 'coc-tailwindcss'
+  \ 'coc-tailwindcss',
   \ 'coc-tsserver',
   \ 'coc-vetur',
   \ ]
