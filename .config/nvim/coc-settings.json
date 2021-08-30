@@ -23,6 +23,7 @@
     "88",
     "--ignore=E501,W503"
   ],
+  "tailwindCSS.emmetCompletions": true,
   "markdownlint.config": {
     "default": true,
     "line-length": false,

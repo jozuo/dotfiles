@@ -375,19 +375,20 @@ inoremap <expr><C-p> pumvisible() ? "<Up>" : "<C-p>"
 
 " Extensions
 let g:coc_global_extensions = [
-  \ 'coc-json',
-  \ 'coc-tsserver',
-  \ 'coc-prettier',
-  \ 'coc-eslint',
-  \ 'coc-vetur',
-  \ 'coc-python',
-  \ 'coc-pyright',
-  \ 'coc-markdownlint',
-  \ 'coc-html',
   \ 'coc-css',
   \ 'coc-emmet',
+  \ 'coc-eslint',
+  \ 'coc-html',
+  \ 'coc-json',
+  \ 'coc-markdownlint',
+  \ 'coc-prettier',
   \ 'coc-phpls',
+  \ 'coc-python',
+  \ 'coc-pyright',
   \ 'coc-snippets',
+  \ 'coc-tailwindcss'
+  \ 'coc-tsserver',
+  \ 'coc-vetur',
   \ ]
 
 "--------------------------------------------------------------------------------
