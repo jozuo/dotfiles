@@ -7,6 +7,9 @@ disabled = true
 [docker_context]
 disabled = true
 
+[vagrant]
+disabled = true
+
 [directory]
 truncation_length = 100
 truncate_to_repo = false
