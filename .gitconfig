@@ -54,5 +54,5 @@
     cmd = code --wait --diff $LOCAL $REMOTE
 [include]
 	path = .gitconfig.local
-[includeIf "gitdir:~/project/"]
-  path = ~/project/.gitconfig
+[includeIf "gitdir:~/tyl/"]
+  path = ~/tyl/.gitconfig
