@@ -188,18 +188,8 @@ export PATH=$ANDROID_SDK/platform-tools:$PATH
 export LDFLAGS="-L/usr/local/opt/zlib/lib"
 export CPPFLAGS="-I/usr/local/opt/zlib/include"
 
-# proxy 
-if [[ -s "${HOME}/.proxy.sh" ]]; then
-  source "${HOME}/.proxy.sh"
-fi
-
 # last of file
 eval "$(starship init zsh)"
 
 # zsh-bd
 . $HOME/.zsh/plugins/bd/bd.zsh
-
-# AWS Profile
-if [ -f ~/.config/aws-profile ]; then
-  . ~/.config/aws-profile zsh
-fi
