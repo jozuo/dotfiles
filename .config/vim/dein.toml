@@ -315,3 +315,11 @@ hook_add = '''
   " 聞いたときに大文字のY/N/Aで答えた場合のみ、次回からは自動で読み込む
   let g:localvimrc_persistent=1 
 '''
+
+[[plugins]]
+repo = 'tyru/caw.vim'
+on_i = 1
+hook_add = '''
+  nmap <C-_> <Plug>(caw:hatpos:toggle)
+  vmap <C-_> <Plug>(caw:hatpos:toggle)
+'''

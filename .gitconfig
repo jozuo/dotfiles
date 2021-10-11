@@ -7,6 +7,7 @@
 	sparseCheckout = true
 	pager = npx git-split-diffs --color | less -RFX
 	precomposeunicode = true
+	excludesfile = /Users/toru/.gitignore_global
 [delta]
     plus-color = "#012800"
     minus-color = "#340001"
@@ -56,3 +57,11 @@
 	path = .gitconfig.local
 [includeIf "gitdir:~/project/"]
   path = ~/project/.gitconfig
+[rebase]
+  autostash = true
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
