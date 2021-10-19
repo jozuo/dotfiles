@@ -383,7 +383,6 @@ let g:coc_global_extensions = [
   \ 'coc-markdownlint',
   \ 'coc-prettier',
   \ 'coc-phpls',
-  \ 'coc-python',
   \ 'coc-pyright',
   \ 'coc-snippets',
   \ 'coc-tailwindcss',
