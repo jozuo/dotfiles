@@ -70,7 +70,6 @@ brew "zsh-autosuggestions"
 brew "zsh-completions"
 brew "zsh-syntax-highlighting"
 brew "dart-lang/dart/dart"
-brew "heroku/brew/heroku"
 brew "sass/sass/sass"
 brew "shivammathur/php/php@7.3"
 brew "shivammathur/php/php@7.4", link: true
