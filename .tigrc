@@ -19,10 +19,8 @@ set vertical-split = no
 # タブ文字の表示幅
 set tab-size = 4
 # 空白無視
-#set ignore-space = all
+# set ignore-space = all
 # 差分の前後の表示行数（diff-context)を指定 
 set diff-context = 6
 # 差分表示に diff-highlight を使う
 set diff-highlight = true
-
-set ignore-space = all

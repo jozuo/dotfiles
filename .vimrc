@@ -427,6 +427,7 @@ endfunction
 " "--------------------------------------------------------------------------------
 " " vimdiff setting start
 " "--------------------------------------------------------------------------------
+set diffopt=iwhite
 " highlight DiffAdd    ctermfg=black ctermbg=2
 " highlight DiffChange ctermfg=black ctermbg=3
 " highlight DiffDelete ctermfg=black ctermbg=6
