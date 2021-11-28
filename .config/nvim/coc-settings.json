@@ -12,8 +12,6 @@
     "php"
   ],
   "eslint.autoFixOnSave": true,
-  "python.autoUpdateLanguageServer": true,
-  "python.jediEnabled": false,
   "python.formatting.provider": "black",
   "python.linting.enabled": true,
   "python.linting.flake8Enabled": true,
@@ -23,6 +21,8 @@
     "88",
     "--ignore=E501,W503"
   ],
+  "pydocstring.formatter": "google",
+  "pyright.disableDiagnostics": true,
   "tailwindCSS.emmetCompletions": true,
   "markdownlint.config": {
     "default": true,

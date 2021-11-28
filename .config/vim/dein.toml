@@ -254,7 +254,9 @@ merged = '0'
 hook_source = 'call coil398#init#coc#hook_source()'
 hook_add = '''
   augroup python
-  autocmd FileType python nnoremap <leader>c :CocCommand pydocstring.runFile<cr>
+  "autocmd FileType python nnoremap <leader>c :CocCommand pydocstring.runFile<cr>
+  autocmd FileType python nmap <leader>c <Plug>(coc-codeaction-line)
+  autocmd FileType python xmap <leader>d <Plug>(coc-codeaction-selected)
   autocmd FileType python nnoremap <leader>s :CocCommand python.sortImports<cr>
   autocmd FileType typescriptreact nnoremap <leader>s :CocCommand editor.action.organizeImport<cr>
   autocmd FileType typescript nnoremap <leader>s :CocCommand editor.action.organizeImport<cr>

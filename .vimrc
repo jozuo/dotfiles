@@ -384,6 +384,7 @@ let g:coc_global_extensions = [
   \ 'coc-prettier',
   \ 'coc-phpls',
   \ 'coc-pyright',
+  \ 'coc-pydocstring',
   \ 'coc-snippets',
   \ 'coc-tailwindcss',
   \ 'coc-tsserver',
