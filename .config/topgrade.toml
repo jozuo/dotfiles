@@ -3,7 +3,7 @@
 
 # Disable specific steps - same options as the command line flag
 #disable = ["system", "emacs"]
-disable = ["system"]
+disable = ["system", "cargo", "mas"]
 
 # Ignore failures for these steps
 #ignore_failures = ["powershell"]
@@ -12,7 +12,7 @@ disable = ["system"]
 #only = ["system", "emacs"]
 
 # Do not ask to retry failed steps (default: false)
-#no_retry = true
+no_retry = true
 
 # Run inside tmux
 #run_in_tmux = true
@@ -38,10 +38,9 @@ disable = ["system"]
 [git]
 #max_concurrency = 5
 # Additional git repositories to pull
-#repos = [
-#    "~/src/*/",
-#    "~/.config/something"
-#]
+repos = [
+    "~/config/"
+]
 
 # Don't pull the predefined git repos
 #predefined_repos = false
