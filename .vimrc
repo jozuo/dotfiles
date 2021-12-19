@@ -491,3 +491,16 @@ function! s:get_highlight_info()
 endfunction
 command! HighlightInfo call s:get_highlight_info()
 
+" " yank/paste時にlemonadeを利用する
+" let g:clipboard = {
+"     \   'name': 'lemonade',
+"     \   'copy': {
+"     \      '+': ['lemonade', 'copy'],
+"     \      '*': ['lemonade', 'copy'],
+"     \    },
+"     \   'paste': {
+"     \      '+': ['lemonade', 'paste'],
+"     \      '*': ['lemonade', 'paste'],
+"     \   },
+"     \   'cache_enabled': 1,
+"     \ }
