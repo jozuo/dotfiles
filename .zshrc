@@ -7,6 +7,9 @@ fi
 if [ `uname -m` = "arm64" ]; then
   export PATH=$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH
 fi
+if [ `uname -n` = "ubuntu" ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 
 # alias
 #alias ls="ls -GF"
