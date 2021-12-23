@@ -505,3 +505,6 @@ command! HighlightInfo call s:get_highlight_info()
 "     \   },
 "     \   'cache_enabled': 1,
 "     \ }
+" .clsのfiletypeをapexにする
+autocmd BufNewFile,BufRead *.cls  set filetype=apex
+autocmd BufNewFile,BufRead *.cls set filetype=apex
