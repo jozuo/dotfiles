@@ -38,6 +38,7 @@
   "snippets.textmateSnippetsRoots": [
     "~/Library/Application Support/Code/User/snippets"
   ],
+  "intelephense.format.braces":"k&r",
   "intelephense.stubs": [
     "apache",
     "bcmath",
