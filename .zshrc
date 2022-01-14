@@ -21,6 +21,8 @@ alias pytest="python -m pytest -v -s --disable-warnings"
 alias vi="nvim"
 alias vim="nvim"
 alias vimdiff='nvim -d '
+alias d='docker'
+alias dc='docker-compose'
 
 if [ `uname -s` = "Darwin" ]; then
   alias awk='gawk'
@@ -146,6 +148,16 @@ if [ -d $HOMEBREW_PREFIX/opt/mysql-client/ ]; then
   export PATH=$HOMEBREW_PREFIX/opt/mysql-client/bin:$PATH
 fi
 
+# google-cloud-sdk
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f "${HOME}/google-cloud-sdk/path.zsh.inc" ]; then 
+    . "${HOME}/google-cloud-sdk/path.zsh.inc"; 
+fi
+# The next line enables shell command completion for gcloud.
+if [ -f "${HOME}~/google-cloud-sdk/completion.zsh.inc" ]; then 
+  . "~/google-cloud-sdk/completion.zsh.inc"; 
+fi
+
 # bat
 export BAT_THEME="Nord"
 
@@ -196,3 +208,9 @@ eval "$(starship init zsh)"
 
 # zsh-bd
 . $HOME/.zsh/plugins/bd/bd.zsh
+
+if [ `uname -n` = "ubuntu" ]; then
+  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/local/libffi/3_4/lib
+  export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:~/local/libffi/3_4/lib/pkgconfig
+fi
+

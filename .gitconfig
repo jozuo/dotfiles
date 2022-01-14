@@ -2,7 +2,6 @@
 	editor = 'nvim' -c 'set fenc=utf-8'
 	quotepath = false
 	autocrlf = input
-	filemode = false
 	ignorecase = false
 	sparseCheckout = true
 	pager = npx git-split-diffs --color | less -RFX

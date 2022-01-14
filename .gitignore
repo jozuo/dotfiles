@@ -4,3 +4,4 @@
 .config/yarn/
 .config/direnv/
 .config/psysh/
+.config/gcloud/
