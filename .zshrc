@@ -177,7 +177,7 @@ fi
 function fzf-docker_exec () {
     local selected_file=$(docker ps --format "{{.Names}}" | fzf)
     if [ -n "$selected_file" ]; then
-        BUFFER="docker container exec -it ${selected_file} "
+        BUFFER="docker container exec -it ${selected_file} bash"
         CURSOR=$#BUFFER
     fi
 }

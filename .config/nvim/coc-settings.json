@@ -28,7 +28,9 @@
     "default": true,
     "line-length": false,
     "no-duplicate-heading": false,
-    "commands-show-output": false
+    "commands-show-output": false,
+    "no-bare-urls": false,
+    "ul-indent": { "indent": 2 }
   },
   "emmet.variables": {
     "lang": "ja",
