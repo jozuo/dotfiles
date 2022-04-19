@@ -221,7 +221,7 @@ bindkey '^@' fzf-cdr
 
 # android sdk
 export ANDROID_SDK=$HOME/Library/Android/sdk
-export PATH=$ANDROID_SDK/platform-tools:$PATH
+export PATH=$ANDROID_SDK/platform-tools:$ANDROID_SDK/emulator:$PATH
 
 # other
 # - environment
