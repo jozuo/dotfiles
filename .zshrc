@@ -83,6 +83,10 @@ if [ -d $HOME/.bin/ ]; then
   export PATH="$HOME/.bin:$PATH"
 fi
 
+# aws
+export AWS_REGION=ap-northeast-1
+export AWS_DEFAULT_REGION=ap-northeast-1
+
 # direnv
 eval "$(direnv hook zsh)"
 
@@ -193,6 +197,27 @@ function fzf-vim () {
 }
 zle -N fzf-vim
 bindkey '^v' fzf-vim
+
+if [[ -n $(echo ${^fpath}/chpwd_recent_dirs(N)) && -n $(echo ${^fpath}/cdr(N)) ]]; then
+    autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+    add-zsh-hook chpwd chpwd_recent_dirs
+    zstyle ':completion:*' recent-dirs-insert both
+    zstyle ':chpwd:*' recent-dirs-default true
+    zstyle ':chpwd:*' recent-dirs-max 1000
+    zstyle ':chpwd:*' recent-dirs-file "$HOME/.cache/chpwd-recent-dirs"
+fi
+
+function fzf-cdr(){
+    local selected_dir=$(cdr -l | awk '{ print $2 }' | \
+      fzf --preview 'f() { sh -c "ls -hFGl $1" }; f {}')
+    if [ -n "$selected_dir" ]; then
+        BUFFER="cd ${selected_dir}"
+        zle accept-line
+    fi
+    zle clear-screen
+}
+zle -N fzf-cdr
+bindkey '^@' fzf-cdr
 
 # android sdk
 export ANDROID_SDK=$HOME/Library/Android/sdk
