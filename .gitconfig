@@ -4,7 +4,7 @@
 	autocrlf = input
 	ignorecase = false
 	sparseCheckout = true
-	pager = npx git-split-diffs --color | less -RFX
+	pager = diff-so-fancy | less --tabs=4 -RFX
 	precomposeunicode = true
 	excludesfile = /Users/toru/.gitignore_global
 [delta]
@@ -31,12 +31,13 @@
   br = branch
 	com = "! f() { remote_head=$(git symbolic-ref --quiet refs/remotes/origin/HEAD); remote_head=${remote_head#refs/remotes/origin/}; git checkout ${remote_head:-$(git rev-parse --symbolic --verify --quiet main || git rev-parse --symbolic --verify --quiet master)}; }; f"
   fixit = commit --amend --no-edit
+  dsf = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
 [http]
 	postBuffer = 1048576000
 [diff]
 	compactionHeuristic = true
 [interactive]
-	diffFilter = delta --color-only
+	diffFilter = diff-so-fancy --patch
 [init]
 	templatedir = ~/.git-templates/git-secrets
 	defaultBranch = main
