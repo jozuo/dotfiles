@@ -61,8 +61,8 @@ hook_add = '''
         \'yml']
 '''
 
-[[plugins]]
-repo = 'tpope/vim-fugitive'
+# [[plugins]]
+# repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'cespare/vim-toml'

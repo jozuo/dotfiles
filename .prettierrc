@@ -1,0 +1,17 @@
+{
+  "printWidth": 100,
+  "trailingComma": "es5",
+  "tabWidth": 2,
+  "semi": true,
+  "singleQuote": true,
+  "endOfLine": "lf",
+  "overrides": [
+    {
+      "files": ["*.md"],
+      "options": {
+        "parser": "markdown-nocjsp",
+        "plugins": ["./.nodenv/versions/16.15.1/lib/node_modules/prettier-plugin-md-nocjsp"]
+      }
+    }
+  ]
+}
