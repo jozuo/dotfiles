@@ -233,9 +233,6 @@ export PATH=$ANDROID_SDK/platform-tools:$ANDROID_SDK/emulator:$PATH
 export LDFLAGS="-L/usr/local/opt/zlib/lib"
 export CPPFLAGS="-I/usr/local/opt/zlib/include"
 
-# last of file
-eval "$(starship init zsh)"
-
 # zsh-bd
 . $HOME/.zsh/plugins/bd/bd.zsh
 
@@ -243,3 +240,6 @@ if [ `uname -n` = "ubuntu" ]; then
   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/local/libffi/3_4/lib
   export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:~/local/libffi/3_4/lib/pkgconfig
 fi
+
+# last of file
+eval "$(starship init zsh)"
