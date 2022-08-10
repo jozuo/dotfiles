@@ -5,3 +5,4 @@
 .config/direnv/
 .config/psysh/
 .config/gcloud/
+.config/fish/

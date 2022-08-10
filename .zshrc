@@ -60,7 +60,7 @@ setopt auto_pushd
 setopt pushd_ignore_dups
 setopt auto_list
 setopt auto_menu
-setopt share_history              # zsh間でhistoryを共有
+# setopt share_history              # zsh間でhistoryを共有
 setopt auto_cd                    # cd無しでディレクトリ移動
 setopt extended_glob              # 高機能なワイルドカード展開を使用する
 setopt correct                    # コマンドのスペルミスを指摘
@@ -152,6 +152,11 @@ if [ -d $HOMEBREW_PREFIX/opt/mysql-client/ ]; then
   export PATH=$HOMEBREW_PREFIX/opt/mysql-client/bin:$PATH
 fi
 
+# ranchar desktop
+if [ -d ${HOME}/.rd/bin/ ]; then
+  export PATH=${PATH}:${HOME}/.rd/bin
+fi
+
 # google-cloud-sdk
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "${HOME}/google-cloud-sdk/path.zsh.inc" ]; then 
@@ -238,4 +243,3 @@ if [ `uname -n` = "ubuntu" ]; then
   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/local/libffi/3_4/lib
   export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:~/local/libffi/3_4/lib/pkgconfig
 fi
-
