@@ -326,3 +326,16 @@ hook_add = '''
   nmap <C-_> <Plug>(caw:hatpos:toggle)
   vmap <C-_> <Plug>(caw:hatpos:toggle)
 '''
+
+[[plugins]]
+repo = 'obaland/vfiler.vim'
+hook_add = '''
+  nnoremap <silent> ;e :VFiler<cr>
+  au FileType vfiler nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+'''
+
+[[plugins]]
+repo = 'obaland/vfiler-column-devicons'
+
+[[plugins]]
+repo = 'obaland/vfiler-fzf'

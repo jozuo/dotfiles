@@ -482,7 +482,7 @@ highlight DbgCurrentLine cterm=underline ctermfg=1 gui=undercurl guifg=#BF616A g
 " nnoremap <silent> p p`]
 
 " 貼り付け時にペーストバッファが上書きされないようにする
-" xnoremap p "_dP
+xnoremap p "_dP
 
 " カーソル下のhighlight情報を表示する
 function! s:get_syn_id(transparent)
@@ -501,6 +501,44 @@ command! HighlightInfo call s:get_highlight_info()
 " .clsのfiletypeをapexにする
 autocmd BufNewFile,BufRead *.cls set filetype=apex
 
+"--------------------------------------------------------------------------------
+" vfiler 
+"--------------------------------------------------------------------------------
+lua << EOF
+  local fzf_action = require'vfiler/fzf/action'
+  require'vfiler/config'.setup {
+    options = {
+      auto_cd = true,
+      auto_resize = false,
+      columns = 'indent,devicons,name',
+      find_file = false,
+      header = true,
+      keep = true,
+      listed = true,
+      show_hidden_files = false,
+      sort = 'name',
+      layout = 'floating',
+      border = 'rounded',
+      git = {
+        enabled = true,
+        ignored = true,
+        untracked = true,
+      },
+      preview = {
+        layout = 'floating',
+        width = 0,
+        height = 0,
+      },
+    },
+    mappings = {
+      ['f'] = fzf_action.files
+    },
+  }
+EOF
+
+"--------------------------------------------------------------------------------
+" lemonade
+"--------------------------------------------------------------------------------
 " yank/paste時にlemonadeを利用する
 " let g:clipboard = {
 "     \   'name': 'lemonade',
