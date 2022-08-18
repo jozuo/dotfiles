@@ -386,7 +386,7 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-markdownlint',
   \ 'coc-prettier',
-  \ 'coc-phpls',
+  \ '@yaegassy/coc-intelephense',
   \ 'coc-pyright',
   \ 'coc-pydocstring',
   \ 'coc-snippets',
