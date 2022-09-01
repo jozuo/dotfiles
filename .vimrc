@@ -498,8 +498,9 @@ function! s:get_highlight_info()
 endfunction
 command! HighlightInfo call s:get_highlight_info()
 
-" .clsのfiletypeをapexにする
+" SF関連ファイルのfiletypeをapexにする
 autocmd BufNewFile,BufRead *.cls set filetype=apex
+autocmd BufNewFile,BufRead *.trigger set filetype=apex
 
 "--------------------------------------------------------------------------------
 " vfiler 
