@@ -36,12 +36,20 @@ on_ft = ['markdown','mkd']
 #   let g:phpfmt_standard = '~/.config/php/c-psr2.xml'
 # '''
 
+# [[plugins]]
+# repo = 'vim-vdebug/vdebug'
+# on_ft = ['php']
+# hook_add = '''
+#   let g:vdebug_options= {
+#   \    'on_close': "detach",
+#   \    'break_on_open': 0
+#   \}
+# '''
+
 [[plugins]]
-repo = 'vim-vdebug/vdebug'
-on_ft = ['php']
+repo = "puremourning/vimspector"
+on_ft = ["python", "javascript", "sh", "php"]
+build = "./install_gadget.py --enable-python --force-enable-node --enable-bash --force-enable-php"
 hook_add = '''
-  let g:vdebug_options= {
-  \    'on_close': "detach",
-  \    'break_on_open': 0
-  \}
+  let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 '''

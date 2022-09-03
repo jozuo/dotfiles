@@ -18,6 +18,7 @@ alias gls="gls --color"
 # alias tig='TERM=xterm-256color tig'
 alias awslocal="aws --endpoint-url=http://localhost:8000"
 alias pytest="python -m pytest -v -s --disable-warnings"
+alias pydebug="python -m debugpy --listen 5678 --wait-for-client"
 alias vi="nvim"
 alias vim="nvim"
 alias vimdiff='nvim -d '
