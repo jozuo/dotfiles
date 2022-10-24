@@ -2,7 +2,8 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'arcticicestudio/nord-vim'
+# repo = 'arcticicestudio/nord-vim'
+repo = 'shaunsingh/nord.nvim'
 hook_add = '''
   "set background=dark
   "au MyAutoCmd VimEnter * nested colorscheme nord
@@ -339,3 +340,6 @@ repo = 'obaland/vfiler-column-devicons'
 
 [[plugins]]
 repo = 'obaland/vfiler-fzf'
+
+[[plugins]]
+repo = 'lukas-reineke/headlines.nvim'

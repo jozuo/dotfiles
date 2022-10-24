@@ -126,6 +126,10 @@ fi
 if [ -d $HOME/.poetry/ ]; then
   export PATH=$HOME/.poetry/bin:${PATH}
 fi
+# python
+if [ -d $HOME/.local/bin/ ]; then
+  export PATH=$HOME/.local/bin:${PATH}
+fi
 
 # php - composer
 if [ -d $HOME/.composer/vendor ]; then
@@ -195,7 +199,7 @@ zle -N fzf-docker_exec
 bindkey '^e' fzf-docker_exec
 
 function fzf-vim () {
-    local selected_file=$(find . -name "*" -type f | grep -v ".typings/" | grep -v ".git/" | grep -v ".node_modules/" | grep -v ".next/" | grep -v ".out/" | grep -v ".__pycache__/" | fzf)
+    local selected_file=$(find . -name "*" -type f | grep -v ".typings/" | grep -v ".git/" | grep -v ".node_modules/" | grep -v ".next/" | grep -v ".venv/"  | grep -v ".out/" | grep -v ".__pycache__/" | grep -v "_cache/"  | grep -v "vendor/" | fzf)
     if [ -n "$selected_file" ]; then
         BUFFER="vi ${selected_file}"
         CURSOR=$#BUFFER

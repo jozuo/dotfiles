@@ -387,6 +387,7 @@ let g:coc_global_extensions = [
   \ 'coc-markdownlint',
   \ 'coc-prettier',
   \ '@yaegassy/coc-intelephense',
+  \ 'coc-prettier',
   \ 'coc-pyright',
   \ 'coc-pydocstring',
   \ 'coc-snippets',
@@ -398,6 +399,7 @@ let g:coc_global_extensions = [
   \ 'coc-sh'
   \ ]
 
+au FileType php let b:coc_root_patterns = ['.git']
 "--------------------------------------------------------------------------------
 " coc setting end
 "--------------------------------------------------------------------------------
@@ -449,6 +451,7 @@ set diffopt=iwhite
 "-------------------------------------------------------------------------------
 " Open current directory
 nmap te :tabedit<CR>
+nmap tt :tabnext 
 nmap <silent><S-Tab> :tabprev<CR>
 nmap <silent><Tab> :tabnext<CR>
 
@@ -553,3 +556,24 @@ EOF
 "     \   },
 "     \   'cache_enabled': 1,
 "     \ }
+
+"--------------------------------------------------------------------------------
+" headlines(for markdown)
+"--------------------------------------------------------------------------------
+lua << EOF
+require("headlines").setup({
+    markdown = {
+        headline_highlights = {
+            "Headline1",
+            "Headline2",
+            "Headline3",
+            "Headline4",
+            "Headline5",
+            "Headline6",
+        },
+        codeblock_highlight = "CodeBlock",
+        dash_highlight = "Dash",
+        quote_highlight = "Quote",
+    },
+})
+EOF
