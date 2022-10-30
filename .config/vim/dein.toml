@@ -6,6 +6,16 @@ repo = 'Shougo/neomru.vim'
 
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
+hook_add = '''
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "bash","css","dockerfile","git_rebase","gitattributes","gitignore","html","java","javascript","json","php","phpdoc","python","regex","scss","sql","toml","typescript","yaml"},
+  sync_install = false,
+  auto_install = true
+}
+EOF
+'''
+
 
 [[plugins]]
 repo = 'shaunsingh/nord.nvim'
