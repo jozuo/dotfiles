@@ -2,15 +2,21 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-# repo = 'arcticicestudio/nord-vim'
-repo = 'shaunsingh/nord.nvim'
-hook_add = '''
-  "set background=dark
-  "au MyAutoCmd VimEnter * nested colorscheme nord
-'''
+repo = 'Shougo/neomru.vim'
 
 [[plugins]]
-repo = 'Shougo/neomru.vim'
+repo = 'nvim-treesitter/nvim-treesitter'
+
+[[plugins]]
+repo = 'shaunsingh/nord.nvim'
+hook_add = '''
+let g:nord_contrast = v:true
+let g:nord_borders = v:true
+let g:nord_disable_background = v:true
+let g:nord_italic = v:false
+let g:nord_uniform_diff_background = v:true
+colorscheme nord
+'''
 
 # [[plugins]]
 # repo = 'jistr/vim-nerdtree-tabs'
@@ -235,11 +241,11 @@ hook_add = '''
 [[plugins]]
 repo = 'maximbaz/lightline-ale'
 
-[[plugins]]
-repo = 'jceb/vim-orgmode'
-hook_add = '''
-  let g:org_todo_keywords=['TODO', 'DOING', 'REVIEW', '|', 'DONE', 'DELEGATED']
-'''
+# [[plugins]]
+# repo = 'jceb/vim-orgmode'
+# hook_add = '''
+#   let g:org_todo_keywords=['TODO', 'DOING', 'REVIEW', '|', 'DONE', 'DELEGATED']
+# '''
 
 [[plugins]]
 repo = 'bfredl/nvim-miniyank'
@@ -331,15 +337,69 @@ hook_add = '''
 [[plugins]]
 repo = 'obaland/vfiler.vim'
 hook_add = '''
-  nnoremap <silent> ;e :VFiler<cr>
-  au FileType vfiler nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
-'''
+nnoremap <silent> ;e :VFiler<cr>
+au FileType vfiler nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 
+lua << EOF
+local fzf_action = require'vfiler/fzf/action'
+require'vfiler/config'.setup {
+  options = {
+    auto_cd = true,
+    auto_resize = false,
+    columns = 'indent,devicons,name',
+    find_file = false,
+    header = true,
+    keep = true,
+    listed = true,
+    show_hidden_files = false,
+    sort = 'name',
+    layout = 'floating',
+    border = 'rounded',
+    git = {
+      enabled = true,
+      ignored = true,
+      untracked = true,
+    },
+    preview = {
+      layout = 'floating',
+      width = 0,
+      height = 0,
+    },
+  },
+  mappings = {
+    ['f'] = fzf_action.files
+  },
+}
+EOF
+'''
+[[plugins]]
+repo = 'obaland/vfiler-fzf'
 [[plugins]]
 repo = 'obaland/vfiler-column-devicons'
 
 [[plugins]]
-repo = 'obaland/vfiler-fzf'
-
-[[plugins]]
 repo = 'lukas-reineke/headlines.nvim'
+hook_add = '''
+lua << EOF
+require("headlines").setup({
+    markdown = {
+        headline_highlights = {
+            "Headline1",
+            "Headline2",
+            "Headline3",
+            "Headline4",
+            "Headline5",
+            "Headline6",
+        },
+        codeblock_highlight = "CodeBlock",
+        dash_highlight = "Dash",
+        quote_highlight = "Quote",
+        fat_headlines = true,
+        fat_headline_lower_string = "█",
+        fat_headline_lower_string = "▔",
+    },
+})
+EOF
+'''
+
+

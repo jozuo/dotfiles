@@ -59,13 +59,10 @@ endif
 if has('nvim')
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
-" autocmd ColorScheme * highlight Visual term=reverse ctermbg=242 guibg=#434C5E
-" autocmd ColorScheme * highlight Comment term=bold ctermfg=244 guifg=#616E88
 " シンタックスハイライト
 syntax on
 " カラースキーム
 set background=dark
-colorscheme nord
 " 透過設定
 if has('nvim')
   highlight Normal ctermbg=none guibg=none
@@ -82,7 +79,7 @@ set guifont=Cica:h13
 " ファイルエンコード
 set fileencoding=utf-8
 " スクロールする時に下が見えるようにする
-set scrolloff=10
+set scrolloff=20
 " .swapファイルを作らない
 set noswapfile
 " バックアップファイルを作らない
@@ -183,26 +180,25 @@ if has("autocmd")
   autocmd FileType org	setlocal sw=2 sts=2 ts=2 et
   autocmd BufRead,BufNewFile *.json set filetype=jsonc
   autocmd FileType sh,markdown setlocal isk-=`
+
+  " SF関連ファイルのfiletypeをapexにする
+  autocmd BufNewFile,BufRead *.cls set filetype=apex
+  autocmd BufNewFile,BufRead *.trigger set filetype=apex
 endif
 " ステータスラインを表示する
 set laststatus=2      
 set t_Co=256
 " leader設定
-"map ¥ <leader>
 map , <leader>
-" map <space> <leader>
 " ターミナルタイトル設定
 set title
 if ! has("patch-8.1.0253")
   let &t_ti .= "\e[22;0t"
   let &t_te .= "\e[23;0t"
 endif
-
-
 "--------------------------------------------------------------------------------
 " environment setting end
 "--------------------------------------------------------------------------------
-
 
 "--------------------------------------------------------------------------------
 " coc setting start
@@ -357,11 +353,8 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-" 'hi CocSearch ctermfg=12 guifg=#18A3FF
-" hi CocMenuSel ctermbg=109 guibg=#13354A
-
-" " 補完設定
-" " 補完表示時のEnterで改行をしない
+" 補完設定
+" 補完表示時のEnterで改行をしない
 " inoremap <expr><CR> coc#pum#visible() ? "<C-y>" : "<CR>"
 
 " ショートカット
@@ -404,7 +397,6 @@ au FileType php let b:coc_root_patterns = ['.git']
 " coc setting end
 "--------------------------------------------------------------------------------
 
-
 "--------------------------------------------------------------------------------
 " nvim terminal setting start
 "--------------------------------------------------------------------------------
@@ -416,7 +408,6 @@ endif
 "--------------------------------------------------------------------------------
 " nvim terminal setting start
 "--------------------------------------------------------------------------------
-
 
 "--------------------------------------------------------------------------------
 " jq format start
@@ -434,17 +425,17 @@ endfunction
 " jq format end
 "--------------------------------------------------------------------------------
 
-" "--------------------------------------------------------------------------------
-" " vimdiff setting start
-" "--------------------------------------------------------------------------------
+"--------------------------------------------------------------------------------
+" vimdiff setting start
+"--------------------------------------------------------------------------------
 set diffopt=iwhite
 " highlight DiffAdd    ctermfg=black ctermbg=2
 " highlight DiffChange ctermfg=black ctermbg=3
 " highlight DiffDelete ctermfg=black ctermbg=6
 " highlight DiffText   ctermfg=black ctermbg=7
-" "--------------------------------------------------------------------------------
-" " vimdiff setting end
-" "--------------------------------------------------------------------------------
+"--------------------------------------------------------------------------------
+" vimdiff setting end
+"--------------------------------------------------------------------------------
 
 "-------------------------------------------------------------------------------
 " Tabs
@@ -468,15 +459,6 @@ augroup nord-theme-overrides
 augroup END
 
 "--------------------------------------------------------------------------------
-" vdebug
-"--------------------------------------------------------------------------------
-highlight DbgBreakptSign cterm=reverse ctermfg=2 gui=reverse guifg=#A3BE8C guibg=#2E3440
-highlight DbgBreakptLine cterm=NONE
-highlight DbgCurrentSign cterm=reverse ctermfg=1 gui=reverse guifg=#BF616A guibg=#2E3440
-highlight DbgCurrentLine cterm=underline ctermfg=1 gui=undercurl guifg=#BF616A guibg=#2E3440 guisp=#BF616A
-" highlight DbgCurrentLine cterm=reverse ctermfg=1 gui=reverse guifg=#BF616A guibg=#2E3440
-
-"--------------------------------------------------------------------------------
 " other
 "--------------------------------------------------------------------------------
 " 貼り付けたテキストの末尾へ自動的に移動する
@@ -487,7 +469,7 @@ highlight DbgCurrentLine cterm=underline ctermfg=1 gui=undercurl guifg=#BF616A g
 " 貼り付け時にペーストバッファが上書きされないようにする
 xnoremap p "_dP
 
-" カーソル下のhighlight情報を表示する
+" カーソル下のhighlight情報を表示する(:HighlightInfo)
 function! s:get_syn_id(transparent)
   let synid = synID(line('.'), col('.'), 1)
   return a:transparent ? synIDtrans(synid) : synid
@@ -500,45 +482,6 @@ function! s:get_highlight_info()
   execute "highlight " . s:get_syn_name(s:get_syn_id(1))
 endfunction
 command! HighlightInfo call s:get_highlight_info()
-
-" SF関連ファイルのfiletypeをapexにする
-autocmd BufNewFile,BufRead *.cls set filetype=apex
-autocmd BufNewFile,BufRead *.trigger set filetype=apex
-
-"--------------------------------------------------------------------------------
-" vfiler 
-"--------------------------------------------------------------------------------
-lua << EOF
-  local fzf_action = require'vfiler/fzf/action'
-  require'vfiler/config'.setup {
-    options = {
-      auto_cd = true,
-      auto_resize = false,
-      columns = 'indent,devicons,name',
-      find_file = false,
-      header = true,
-      keep = true,
-      listed = true,
-      show_hidden_files = false,
-      sort = 'name',
-      layout = 'floating',
-      border = 'rounded',
-      git = {
-        enabled = true,
-        ignored = true,
-        untracked = true,
-      },
-      preview = {
-        layout = 'floating',
-        width = 0,
-        height = 0,
-      },
-    },
-    mappings = {
-      ['f'] = fzf_action.files
-    },
-  }
-EOF
 
 "--------------------------------------------------------------------------------
 " lemonade
@@ -556,24 +499,3 @@ EOF
 "     \   },
 "     \   'cache_enabled': 1,
 "     \ }
-
-"--------------------------------------------------------------------------------
-" headlines(for markdown)
-"--------------------------------------------------------------------------------
-lua << EOF
-require("headlines").setup({
-    markdown = {
-        headline_highlights = {
-            "Headline1",
-            "Headline2",
-            "Headline3",
-            "Headline4",
-            "Headline5",
-            "Headline6",
-        },
-        codeblock_highlight = "CodeBlock",
-        dash_highlight = "Dash",
-        quote_highlight = "Quote",
-    },
-})
-EOF

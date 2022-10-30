@@ -26,7 +26,7 @@ hook_add = '''
 # quote内のプログラムをシンタックスハイライトする
 [[plugins]]
 repo = 'joker1007/vim-markdown-quote-syntax'
-on_ft = ['markdown','mkd']
+on_ft = ['markdown']
 
 # [[plugins]]
 # repo = 'beanworks/vim-phpfmt'
