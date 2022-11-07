@@ -412,4 +412,5 @@ require("headlines").setup({
 EOF
 '''
 
-
+[[plugins]]
+repo = 'vim-jp/vimdoc-ja'
