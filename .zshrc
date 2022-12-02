@@ -88,6 +88,9 @@ fi
 export AWS_REGION=ap-northeast-1
 export AWS_DEFAULT_REGION=ap-northeast-1
 
+# awsume
+alias awsume=". awsume"
+
 # direnv
 eval "$(direnv hook zsh)"
 
