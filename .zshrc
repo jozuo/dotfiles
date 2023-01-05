@@ -22,8 +22,7 @@ alias pydebug="python -m debugpy --listen 5678 --wait-for-client"
 alias vi="nvim"
 alias vim="nvim"
 alias vimdiff='nvim -d '
-alias d='docker'
-alias dc='docker-compose'
+alias lg='lazygit'
 
 if [ `uname -s` = "Darwin" ]; then
   alias awk='gawk'
@@ -248,6 +247,9 @@ if [ `uname -n` = "ubuntu" ]; then
   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/local/libffi/3_4/lib
   export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:~/local/libffi/3_4/lib/pkgconfig
 fi
+
+# lazygit
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # last of file
 eval "$(starship init zsh)"
