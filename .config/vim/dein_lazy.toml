@@ -65,4 +65,7 @@ hook_add = '''
     \    'vimspectorBPDisabled': 11,
     \    'vimspectorPC':         11,
     \ }
+  sign define vimspectorBP text=🔴 texthl=Normal
+  sign define vimspectorBPDisabled text=🔵 texthl=Normal
+  sign define vimspectorPC text=🔶 texthl=SpellBad
 '''
