@@ -16,7 +16,6 @@ require'nvim-treesitter.configs'.setup {
 EOF
 '''
 
-
 [[plugins]]
 repo = 'shaunsingh/nord.nvim'
 hook_add = '''
@@ -329,12 +328,12 @@ hook_add = '''
   endif
 '''
 
-[[plugins]]
-repo = 'embear/vim-localvimrc'
-hook_add = '''
-  " 聞いたときに大文字のY/N/Aで答えた場合のみ、次回からは自動で読み込む
-  let g:localvimrc_persistent=1 
-'''
+# [[plugins]]
+# repo = 'embear/vim-localvimrc'
+# hook_add = '''
+#   " 聞いたときに大文字のY/N/Aで答えた場合のみ、次回からは自動で読み込む
+#   let g:localvimrc_persistent=1 
+# '''
 
 [[plugins]]
 repo = 'tyru/caw.vim'
