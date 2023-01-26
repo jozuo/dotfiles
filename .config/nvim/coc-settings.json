@@ -16,11 +16,7 @@
   "python.linting.enabled": true,
   "python.linting.flake8Enabled": true,
   "python.linting.mypyEnabled": true,
-  "python.linting.flake8Args": [
-    "--max-line-length",
-    "88",
-    "--ignore=E501,W503"
-  ],
+  "python.linting.flake8Args": ["--max-line-length", "88", "--ignore=E501,W503"],
   "pydocstring.formatter": "google",
   "pyright.disableDiagnostics": true,
   "tailwindCSS.emmetCompletions": true,
@@ -37,11 +33,9 @@
     "locale": "ja-JP",
     "charset": "UTF-8"
   },
-  "snippets.textmateSnippetsRoots": [
-    "~/Library/Application Support/Code/User/snippets"
-  ],
+  "snippets.textmateSnippetsRoots": ["~/Library/Application Support/Code/User/snippets"],
   "prettier.enable": true,
-  "intelephense.format.braces":"k&r",
+  "intelephense.format.braces": "k&r",
   "intelephense.stubs": [
     "apache",
     "bcmath",
@@ -88,6 +82,7 @@
     "Phar",
     "posix",
     "pspell",
+    "random",
     "readline",
     "recode",
     "Reflection",
