@@ -118,6 +118,11 @@ if [ -d $HOME/.nodenv/ ]; then
   eval "$(nodenv init -)"
 fi
 
+# ruby - rbdenv
+if [ -d $HOME/.rbenv/ ]; then
+  eval "$(rbenv init -)"
+fi
+
 # python - pyenv
 if [ -d $HOME/.pyenv/ ]; then
     export PYENV_ROOT="${HOME}/.pyenv"

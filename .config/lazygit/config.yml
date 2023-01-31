@@ -1,3 +1,7 @@
+git:
+  paging:
+    colorArg: always
+    pager: diff-so-fancy
 gui:
   showCommandLog: false
   showIcons: true
