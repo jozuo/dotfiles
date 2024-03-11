@@ -1,0 +1,146 @@
+;==================================================
+; IMEのON/OFF用関数
+; 以下サイトから拝借
+;   https://github.com/koirand/vimmer-ahk/blob/master/vimmer-ahk.ahk
+;==================================================
+IME_SET(SetSts, Win_title="A")    {
+    ControlGet,hwnd,HWND,,,%Win_title%
+    if  (WinActive(Win_title))   {
+        ptrSize := !A_PtrSize ? 4 : A_PtrSize
+        VarSetCapacity(stGTI, cbSize:=4+4+(PtrSize*6)+16, 0)
+        NumPut(cbSize, stGTI,  0, "UInt")  ;   DWORD   cbSize;
+        hwnd := DllCall("GetGUIThreadInfo", Uint,0, Uint,&stGTI)
+                 ? NumGet(stGTI,8+PtrSize,"UInt") : hwnd
+    }
+    return DllCall("SendMessage"
+          , UInt, DllCall("imm32\ImmGetDefaultIMEWnd", Uint,hwnd)
+          , UInt, 0x0283 ;Message : WM_IME_CONTROL
+          ,  Int, 0x006  ;wParam  : IMC_SETOPENSTATUS
+          ,  Int, SetSts) ;lParam  : 0 or 1
+}
+
+
+;==================================================
+; アクティブウィンドウの中心があるモニターの座標取得
+;==================================================
+GetCurrentMonitorPosition(_title, byref _left, byref _right, byref _top, byref _bottom) {
+    ; アクティブウインドウのサイズ情報取得
+    WinGetPos, _x, _y, _width, _height, %_title%
+    ; モニター数取得
+    SysGet, _count, MonitorCount
+    ; アクティブウィンドウの中心があるモニターのサイズ情報取得
+    _centerX := _x + _width / 2
+    _centerY := _y + _height / 2
+    Loop, %_count% {
+        SysGet, _monitor, Monitor, %A_Index%
+        if (_monitorLeft > _centerX || _centerX > _monitorRight) {
+            continue
+        }
+        if (_monitorTop > _centerY || _centerY > _monitorBottom) {
+            continue
+        }
+        _left := _monitorLeft
+        _right := _monitorRight
+        _top := _monitorTop
+        _bottom := _monitorBottom
+        break
+    }
+}
+
+;==================================================
+; ウィンドウの不可視ボーダーを除いた画面サイズの取得
+; 以下サイトから拝借
+;   https://www.reddit.com/r/AutoHotkey/comments/14xjya7/force_window_size_and_position/
+;==================================================
+WinGetPosEx(byref X:="", byref Y:="", byref W:="", byref H:="", hwnd:="") {
+    static DWMWA_EXTENDED_FRAME_BOUNDS := 9
+    if (hwnd = "")
+        hwnd := WinExist() ; last found window
+    if hwnd is not integer
+        hwnd := WinExist(hwnd)
+    RECTsize := VarSetCapacity(RECT, 16, 0)
+    DllCall("dwmapi\DwmGetWindowAttribute"
+            , "ptr" , hwnd
+            , "uint", DWMWA_EXTENDED_FRAME_BOUNDS
+            , "ptr" , &RECT
+            , "uint", RECTsize
+            , "uint")
+    X := NumGet(RECT, 0, "int")
+    Y := NumGet(RECT, 4, "int")
+    W := NumGet(RECT, 8, "int") - X
+    H := NumGet(RECT, 12, "int") - Y
+}
+
+;==================================================
+; ウィンドウの不可視ボーダーを除いた画面移動
+; 以下サイトから拝借
+;   https://www.reddit.com/r/AutoHotkey/comments/14xjya7/force_window_size_and_position/
+;==================================================
+WinMoveEx(X:="", Y:="", W:="", H:="", hwnd:="") {
+    if hwnd is not integer
+        hwnd := WinExist(hwnd)
+    if (hwnd = "")
+        hwnd := WinExist()
+    ; compare pos and get offset
+    WinGetPosEx(fX, fY, fW, fH, hwnd)
+    WinGetPos wX, wY, wW, wH, % "ahk_id" hwnd
+    xDiff := fX - wX
+    hDiff := wH - fH
+    nX := nY := nW := nH := ""
+    pixel := 1
+    ; new X, Y, W, H with offset corrected
+    (X!="") && nX := X - xDiff - pixel
+    (Y!="") && nY := Y - pixel
+    (W!="") && nW := W + (xDiff + pixel) * 2
+    (H!="") && nH := H + hDiff + (pixel * 2)
+    WinMove % "ahk_id" hwnd,, nX, nY, nW, nH
+}
+
+;==================================================
+; 画面のリサイズ(マルチモニター考慮済み)
+;==================================================
+ResizeActiveWindows(position, ratio) {
+    ; アクティブウィンドウ取得
+    WinGetTitle, _title, A
+
+    ; タスクバーの高さ取得(`_taskbarHeight`に格納)
+    WinGetPos,,,, _taskbarHeight, ahk_class Shell_TrayWnd
+    
+    ; アクティブウィンドウが属するモニター座標取得
+    GetCurrentMonitorPosition(_title, _monitorLeft, _monitorRight, _monitorTop, _monitorBottom)
+    _monitorWidth := (_monitorRight - _monitorLeft)
+    _monitorHeight := (_monitorBottom - _monitorTop) - _taskbarHeight
+
+    if (position == "F") {
+        _x := _monitorLeft
+        _y := _monitorTop
+        _width := _monitorWidth
+        _height := _monitorHeight
+    }
+    else if (position == "L") {
+        _x := _monitorLeft
+        _y := _monitorTop
+        _width := _monitorWidth * ratio
+        _height := _monitorHeight
+    }
+    else if (position == "R") {
+        _x := _monitorLeft + (_monitorWidth * (1.0 - ratio))
+        _y := _monitorTop
+        _width := _monitorWidth * ratio
+        _height := _monitorHeight
+    }
+    else if (position == "U") {
+        _x := _monitorLeft
+        _y := _monitorTop
+        _width := _monitorWidth
+        _height := _monitorHeight * ratio
+    }
+    else {
+        _x := _monitorLeft
+        _y := _monitorTop + (_monitorHeight * ratio)
+        _width := _monitorWidth
+        _height := _monitorHeight * ratio
+    }
+    WinRestore, %_title%
+    WinMoveEx(_x, _y, _width, _height, _title)
+}
